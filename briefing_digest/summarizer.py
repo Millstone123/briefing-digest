@@ -1,4 +1,4 @@
-"""Pure text scoring and sentence selection helpers."""
+"""Pure sentence scoring and selection helpers."""
 
 from __future__ import annotations
 
@@ -11,12 +11,12 @@ _SENTENCE = re.compile(r"(?<=[.!?])\s+")
 
 
 def _sentences(text: str) -> List[str]:
-    cleaned = " ".join(text.split())
-    return [part.strip() for part in _SENTENCE.split(cleaned) if part.strip()]
+    normalized = " ".join(text.split())
+    return [sentence.strip() for sentence in _SENTENCE.split(normalized) if sentence.strip()]
 
 
 def summarise(text: str, limit: int = 3) -> str:
-    """Return the highest-scoring sentences in their original order."""
+    """Return the strongest sentences in their original order."""
     if limit < 1:
         raise ValueError("limit must be positive")
     sentences = _sentences(text)
@@ -28,7 +28,7 @@ def summarise(text: str, limit: int = 3) -> str:
         words = [word.lower() for word in _WORD.findall(sentence)]
         score = sum(frequencies[word] for word in words) / max(len(words), 1)
         if index < 2:
-            score += 1.5
+            score += 1.25
         scored.append((score, index, sentence))
     selected = sorted(sorted(scored, reverse=True)[:limit], key=lambda item: item[1])
     return " ".join(item[2] for item in selected)

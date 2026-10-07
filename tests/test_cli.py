@@ -1,11 +1,12 @@
 import unittest
 
-from briefing_digest.cli import main
+from briefing_digest.cli import REQUEST, main
 
 
 class CliTests(unittest.TestCase):
-    def test_summarise_this_workflow(self):
-        self.assertEqual(main(["summarise", "this"]), 0)
+    def test_exact_request(self):
+        self.assertEqual(REQUEST, "summarise thise")
+        self.assertEqual(main([REQUEST]), 0)
 
 
 if __name__ == "__main__":

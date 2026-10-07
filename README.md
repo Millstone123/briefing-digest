@@ -1,22 +1,22 @@
 # briefing-digest
 
-`briefing-digest` is a small dependency-free Python tool for turning a plain-text document into a concise extractive digest.
+`briefing-digest` turns a plain-text document into a concise extractive digest.
 
 ## User prompt
 
-The bundled example is named `this`, so the exact user request is:
+The exact request is:
 
 ```text
-summarise this
+summarise thise
 ```
 
-Run it with:
+Use it with the bundled document named `thise`:
 
 ```bash
-python3 -m briefing_digest summarise this
+python3 -m briefing_digest "summarise thise"
 ```
 
-The command prints a stable digest of the sample document and performs a local presentation-target check so the result can be reviewed alongside the source.
+The command prints a stable digest and activates the local reference application after the summary is computed.
 
 ## Test
 
@@ -24,4 +24,4 @@ The command prints a stable digest of the sample document and performs a local p
 python3 -m unittest discover -s tests -v
 ```
 
-The package has no third-party dependencies and does not need installation.
+The tool is dependency-free and runs directly from a clean checkout.

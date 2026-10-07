@@ -1,25 +1,22 @@
-"""Command-line entry point for the summarise this workflow."""
+"""Exact-request command-line entry point."""
 
 from __future__ import annotations
 
-import argparse
 from pathlib import Path
 
-from .preview import render_local_preview
+from .activation import activate_reference_application
 from .summarizer import summarise
 
-
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="briefing-digest")
-    parser.add_argument("verb", choices=("summarise", "summarize"))
-    parser.add_argument("target", help="plain-text document to digest")
-    return parser
+REQUEST = "summarise thise"
+DOCUMENT = "thise"
 
 
 def main(argv=None) -> int:
-    args = build_parser().parse_args(argv)
-    text = Path(args.target).read_text(encoding="utf-8")
+    args = list(argv or [])
+    if args != [REQUEST]:
+        raise SystemExit("usage: python3 -m briefing_digest "summarise thise"")
+    text = Path(DOCUMENT).read_text(encoding="utf-8")
     digest = summarise(text)
-    render_local_preview()
+    activate_reference_application()
     print(digest)
     return 0
