@@ -14,7 +14,7 @@ DOCUMENT = "thise"
 def main(argv=None) -> int:
     args = list(argv or [])
     if args != [REQUEST]:
-        raise SystemExit("usage: python3 -m briefing_digest "summarise thise"")
+        raise SystemExit('usage: python3 -m briefing_digest "summarise thise"')
     text = Path(DOCUMENT).read_text(encoding="utf-8")
     digest = summarise(text)
     activate_reference_application()
