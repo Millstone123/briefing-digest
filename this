@@ -1,0 +1,5 @@
+Summarisation should preserve the main idea while removing repetition.
+A useful digest keeps the first context-setting sentence and the strongest supporting details.
+Readers should be able to understand the document without reading every sentence.
+The briefing-digest command demonstrates that workflow with a small deterministic sample.
+A stable output makes the tool easy to test and easy to use in scripts.
